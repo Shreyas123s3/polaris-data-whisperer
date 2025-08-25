@@ -17,19 +17,22 @@ const Navbar = () => {
   const { user, signOut, loading } = useAuth();
 
   const handleSignOut = async () => {
+    console.log('Sign Out clicked');
     await signOut();
     navigate('/');
   };
 
   const handleSignInClick = () => {
-    console.log('Sign In button clicked, navigating to /auth');
+    console.log('Sign In button clicked - navigating to /auth');
     navigate('/auth');
   };
 
   const handleGetStartedClick = () => {
-    console.log('Get Started button clicked, navigating to /auth');
+    console.log('Get Started button clicked - navigating to /auth');
     navigate('/auth');
   };
+
+  console.log('Navbar render - user:', user, 'loading:', loading);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-morphic border-b border-polaris-purple/20">
@@ -101,12 +104,14 @@ const Navbar = () => {
                 size="sm" 
                 className="hidden md:flex" 
                 onClick={handleSignInClick}
+                type="button"
               >
                 Sign In
               </Button>
               <Button 
                 className="btn-primary" 
                 onClick={handleGetStartedClick}
+                type="button"
               >
                 Get Started
               </Button>
