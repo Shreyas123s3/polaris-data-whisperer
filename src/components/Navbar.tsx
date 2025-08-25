@@ -2,7 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Database, Menu, Bell, User, LogOut } from 'lucide-react';
+import { Database, Menu, User, LogOut } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import {
   DropdownMenu,
@@ -19,6 +19,16 @@ const Navbar = () => {
   const handleSignOut = async () => {
     await signOut();
     navigate('/');
+  };
+
+  const handleSignInClick = () => {
+    console.log('Sign In button clicked, navigating to /auth');
+    navigate('/auth');
+  };
+
+  const handleGetStartedClick = () => {
+    console.log('Get Started button clicked, navigating to /auth');
+    navigate('/auth');
   };
 
   return (
@@ -86,10 +96,18 @@ const Navbar = () => {
             </DropdownMenu>
           ) : (
             <>
-              <Button variant="outline" size="sm" className="hidden md:flex" onClick={() => navigate('/auth')}>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="hidden md:flex" 
+                onClick={handleSignInClick}
+              >
                 Sign In
               </Button>
-              <Button className="btn-primary" onClick={() => navigate('/auth')}>
+              <Button 
+                className="btn-primary" 
+                onClick={handleGetStartedClick}
+              >
                 Get Started
               </Button>
             </>
